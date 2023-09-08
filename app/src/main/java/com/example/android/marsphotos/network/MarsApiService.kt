@@ -25,7 +25,7 @@ interface MarsApiService {
 
 }
 
-// This declaration below allows you to use Singleton pattern
+// 'object' declaration below allows you to use Singleton pattern
 object MarsApi {
     // Lazy initialization makes sure it is initialized at its first usage.
     val retrofitService: MarsApiService by lazy {
