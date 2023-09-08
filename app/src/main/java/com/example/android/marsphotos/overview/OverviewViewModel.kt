@@ -51,8 +51,12 @@ class OverviewViewModel : ViewModel() {
         // Any coroutine launched in this scope is automatically canceled
         // if the ViewModel is cleared.
         viewModelScope.launch {
-            val listResult = MarsApi.retrofitService.getPhotos()
-            _status.value = listResult
+            try {
+                val listResult = MarsApi.retrofitService.getPhotos()
+                _status.value = listResult
+            } catch (e: Exception) {
+                _status.value = "Failure: ${e.message}"
+            }
         }
     }
 }
